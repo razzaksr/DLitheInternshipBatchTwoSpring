@@ -1,0 +1,22 @@
+Spring boot project:
+
+1. Eclipse for Enterprise java developer
+
+2. Spring Tool Suite - IDE
+
+3. Spring Initalizer>>start.spring.io
+
+
+Project:
+
+src/main/resources:
+application.properties:
+Configuration
+
+spring.mvc.view.prefix=/WEB-INF/CUSTOM FOLDER/
+spring.mvc.view.suffic=.jsp
+
+src>>main>>webapp>> WEB-INF>> CUSTOMFOLDER:
+web pages: java server page
+
+
