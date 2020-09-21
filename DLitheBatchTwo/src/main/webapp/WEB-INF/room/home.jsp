@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Demonstration of Spring</title>
+<title>Home Page</title>
 </head>
 <body>
-<h1>Spring Demo ${who}</h1>
+<h1>Welcome to home</h1>
 </body>
 </html>
