@@ -1,5 +1,7 @@
 package dlithe.batchtwo.internship.DLitheBatchTwo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,8 +10,13 @@ public class VehicleService
 {
 	@Autowired
 	private VehicleRepository repo;
-	public void newadd(Vehicle vehicle)
+	public Vehicle newadd(Vehicle vehicle)
 	{
-		repo.save(vehicle);
+		return repo.save(vehicle);
+	}
+	
+	public List<Vehicle> every()
+	{
+		return repo.findAll();
 	}
 }

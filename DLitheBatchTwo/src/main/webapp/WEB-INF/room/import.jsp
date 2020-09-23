@@ -7,6 +7,9 @@
 <title>New Vehicle</title>
 </head>
 <body>
+${msg }
+<%@ taglib prefix="dlithe" uri="http://www.springframework.org/tags/form" %>
+<dlithe:errors path="vehicle.*"/>
 <form action="newstock" method="post">
 <table>
 <tr><td><input type="text" name="model" placeholder="Enter the model of vehicle"></td></tr>

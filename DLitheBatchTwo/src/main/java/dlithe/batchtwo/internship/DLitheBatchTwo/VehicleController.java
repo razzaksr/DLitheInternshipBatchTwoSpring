@@ -1,7 +1,12 @@
 package dlithe.batchtwo.internship.DLitheBatchTwo;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,6 +16,7 @@ public class VehicleController
 {
 	@Autowired
 	private VehicleService service;
+	List<Vehicle> temp;
 	// requesting import.jsp to add new vehicle
 	@RequestMapping("/add")
 	public ModelAndView askToAdd()
@@ -19,9 +25,22 @@ public class VehicleController
 	}
 	// adding new vehicle
 	@RequestMapping(value="/newstock",method=RequestMethod.POST)
-	public ModelAndView addSubmit(Vehicle veh)
+	public ModelAndView addSubmit(@Valid Vehicle veh, BindingResult bind)
 	{
-		service.newadd(veh);
-		return new ModelAndView("import");
+		ModelAndView mod=new ModelAndView("import");
+		if(bind.hasErrors()) {return mod;}
+		if(service.newadd(veh)!=null)
+		{
+			mod.addObject("msg", "Vehicle "+veh.getModel()+" has added in stock");
+		}
+		else {mod.addObject("msg", "Vehicle "+veh.getModel()+" has not added in stock");}
+		return mod;
+	}
+	
+	@RequestMapping(value="/list",method=RequestMethod.GET)
+	public ModelAndView traverse()
+	{
+		temp=service.every();
+		return new ModelAndView("show").addObject("all", temp);
 	}
 }

@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="stock")
@@ -15,9 +16,13 @@ public class Vehicle
 	@Column(name="entry_id")
 	private Integer stkid;
 	@Column(name="stock_model")
-	private String model; 
+	@NotNull
+	private String model;
+	@NotNull
 	private String type;
+	@NotNull
 	private int cc, year, quantity, milage;
+	@NotNull
 	private double price;
 	
 	@Override
