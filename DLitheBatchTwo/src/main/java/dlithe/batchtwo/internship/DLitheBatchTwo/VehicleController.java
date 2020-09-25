@@ -7,8 +7,10 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -42,5 +44,19 @@ public class VehicleController
 	{
 		temp=service.every();
 		return new ModelAndView("show").addObject("all", temp);
+	}
+	
+	@RequestMapping(value="/editable",method=RequestMethod.GET)
+	public ModelAndView editRequest(@RequestParam("id") int id)
+	{
+		Vehicle v=service.single(id);
+		return new ModelAndView("edit").addObject("one", v);
+	}
+	
+	@RequestMapping(value="/change",method=RequestMethod.POST)
+	public ModelAndView editResponse(Vehicle vehicle)
+	{
+		service.alter(vehicle);
+		return traverse().addObject("msg", vehicle.getModel()+" has updated");
 	}
 }

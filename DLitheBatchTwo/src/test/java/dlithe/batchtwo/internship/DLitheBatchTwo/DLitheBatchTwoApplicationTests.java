@@ -49,6 +49,16 @@ class DLitheBatchTwoApplicationTests
 		
 		when(repo.findAll()).thenReturn(storage);
 		assertTrue(serv.every().get(0).getCc()>=400);
-		assertNull(serv.every().get(2));
+		assertNotNull(serv.every().get(2));
+	}
+	
+	@Test
+	public void testUpdate()
+	{
+		Vehicle veh1=new Vehicle(12, "Himalayan", "Gear", 500, 2019, 10, 20, 198700.8);
+		Vehicle veh2=new Vehicle(10, "R15", "Gear", 150, 2020, 20, 30, 98700.3);
+		when(repo.save(veh1)).thenReturn(veh1);
+		assertEquals(veh1, serv.alter(veh1));
+		assertTrue(serv.alter(veh1).getCc()>=veh2.getCc());
 	}
 }

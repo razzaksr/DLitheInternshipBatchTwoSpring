@@ -19,4 +19,15 @@ public class VehicleService
 	{
 		return repo.findAll();
 	}
+	
+	public Vehicle single(int id)
+	{
+		return repo.findById(id).orElse(new Vehicle());
+	}
+	
+	public Vehicle alter(Vehicle vehicle)
+	{
+		return repo.save(vehicle);
+	}
+	
 }
