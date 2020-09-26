@@ -1,5 +1,6 @@
 package dlithe.batchtwo.internship.DLitheBatchTwo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -58,5 +59,33 @@ public class VehicleController
 	{
 		service.alter(vehicle);
 		return traverse().addObject("msg", vehicle.getModel()+" has updated");
+	}
+	
+	@RequestMapping(value="/deletable",method=RequestMethod.GET)
+	public ModelAndView deleteRequest(@RequestParam("id") int id)
+	{
+		Vehicle temp=service.single(id);
+		String hold=service.remove(temp);
+		return traverse().addObject("msg",hold+" has deleted");
+	}
+	
+	@RequestMapping(value="/short",method=RequestMethod.GET)
+	public ModelAndView letShort()
+	{
+		return new ModelAndView("short");
+	}
+	
+	@RequestMapping(value="/shortlist",method=RequestMethod.POST)
+	public ModelAndView shortRequest(@RequestParam("stkid") String stkid,@RequestParam("milage") String milage,@RequestParam("cc") String cc,@RequestParam("price") String price)
+	{
+		if(stkid!=""&&cc==""&&milage==""&&price=="")
+		{
+			// Integer.parseInt(string), Long.parseLong(string)
+			Vehicle tm=service.single(Integer.parseInt(stkid));
+			temp=new ArrayList<Vehicle>();
+			temp.add(tm);
+			return new ModelAndView("show").addObject("all", temp);
+		}
+		return null;
 	}
 }

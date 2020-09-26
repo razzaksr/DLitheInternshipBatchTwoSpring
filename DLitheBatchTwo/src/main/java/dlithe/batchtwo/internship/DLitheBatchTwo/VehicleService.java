@@ -30,4 +30,25 @@ public class VehicleService
 		return repo.save(vehicle);
 	}
 	
+	public String remove(Vehicle vehicle)
+	{
+		String model=vehicle.getModel();
+		repo.delete(vehicle);
+		return model;
+	}
+	
+	public List<Vehicle> getByMilage(int milage)
+	{
+		return repo.readByMilage(milage);
+	}
+	
+	public List<String> getByCost(int price)
+	{
+		return repo.readByPrice(price);
+	}
+	
+	public List<Vehicle> getByCc(int cc)
+	{
+		return repo.readByCc(cc);
+	}
 }

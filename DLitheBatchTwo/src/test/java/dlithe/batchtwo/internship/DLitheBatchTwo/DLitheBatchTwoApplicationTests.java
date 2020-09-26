@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -60,5 +61,13 @@ class DLitheBatchTwoApplicationTests
 		when(repo.save(veh1)).thenReturn(veh1);
 		assertEquals(veh1, serv.alter(veh1));
 		assertTrue(serv.alter(veh1).getCc()>=veh2.getCc());
+	}
+	
+	@Test
+	public void testDelete()
+	{
+		Vehicle veh1=new Vehicle(12, "Himalayan", "Gear", 500, 2019, 10, 20, 198700.8);
+		Vehicle veh2=new Vehicle(10, "R15", "Gear", 150, 2020, 20, 30, 98700.3);
+		assertSame(veh2.getModel(),serv.remove(veh2));
 	}
 }
