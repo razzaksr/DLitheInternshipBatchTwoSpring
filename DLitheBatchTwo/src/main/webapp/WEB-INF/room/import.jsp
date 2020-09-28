@@ -7,6 +7,10 @@
 <title>New Vehicle</title>
 </head>
 <body>
+<%response.setHeader("Cache-Control", "no-cache");
+response.setHeader("Cache-Control", "no-store");
+response.setHeader("Pragma", "no-cache");
+response.setDateHeader("Expires", 0); %>
 ${msg }
 <%@ taglib prefix="dlithe" uri="http://www.springframework.org/tags/form" %>
 <dlithe:errors path="vehicle.*"/>
@@ -25,5 +29,7 @@ ${msg }
 </tr>
 </table>
 </form>
+<a href="back">Back To Home</a>
+<a href="logout">Logout</a>
 </body>
 </html>

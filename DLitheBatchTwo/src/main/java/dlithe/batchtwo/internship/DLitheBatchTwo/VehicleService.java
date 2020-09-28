@@ -42,7 +42,7 @@ public class VehicleService
 		return repo.readByMilage(milage);
 	}
 	
-	public List<String> getByCost(int price)
+	public List<String> getByCost(double price)
 	{
 		return repo.readByPrice(price);
 	}
@@ -51,4 +51,5 @@ public class VehicleService
 	{
 		return repo.readByCc(cc);
 	}
+
 }

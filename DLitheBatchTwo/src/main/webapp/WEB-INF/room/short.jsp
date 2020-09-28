@@ -7,6 +7,10 @@
 <title>Shortlisting Vehicle's</title>
 </head>
 <body>
+<%response.setHeader("Cache-Control", "no-cache");
+response.setHeader("Cache-Control", "no-store");
+response.setHeader("Pragma", "no-cache");
+response.setDateHeader("Expires", 0); %>
 <form action="shortlist" method="post">
 <table>
 <tr><td><input type="text" name="stkid" placeholder="Enter the stock id to fetch"></td></tr>
@@ -19,5 +23,7 @@
 </tr>
 </table>
 </form>
+<a href="back">Back To Home</a>
+<a href="logout">Logout</a>
 </body>
 </html>

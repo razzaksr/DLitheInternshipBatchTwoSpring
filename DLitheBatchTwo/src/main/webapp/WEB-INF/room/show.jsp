@@ -7,6 +7,10 @@
 <title>Vehicle List</title>
 </head>
 <body>
+<%response.setHeader("Cache-Control", "no-cache");
+response.setHeader("Cache-Control", "no-store");
+response.setHeader("Pragma", "no-cache");
+response.setDateHeader("Expires", 0); %>
 ${msg }
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="sujith"%>
 <table border="4" cellspacing="4" cellpadding="4">
@@ -25,5 +29,7 @@ ${msg }
 </tr>
 </sujith:forEach>
 </table>
+<a href="back">Back To Home</a>
+<a href="logout">Logout</a>
 </body>
 </html>

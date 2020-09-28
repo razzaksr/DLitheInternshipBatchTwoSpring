@@ -7,6 +7,14 @@
 <title>Home Page</title>
 </head>
 <body>
+<%response.setHeader("Cache-Control", "no-cache");
+response.setHeader("Cache-Control", "no-store");
+response.setHeader("Pragma", "no-cache");
+response.setDateHeader("Expires", 0); %>
 <h1>Welcome to home</h1>
+<a href="list">Check Stock</a>
+<a href="add">Add New Bike</a>
+<a href="short">Shortlisting</a>
+<a href="logout">Logout</a>
 </body>
 </html>
